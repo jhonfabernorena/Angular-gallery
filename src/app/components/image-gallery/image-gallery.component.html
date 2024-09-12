@@ -1,4 +1,12 @@
-<div>
+<div class="image-gallery-container">
+  <h2>Image Gallery</h2>
+
+  <!-- Botón para abrir el modal de favoritos -->
+  <div class="favorites-button">
+    <button (click)="openFavoritesModal()">Favoritos</button>
+  </div>
+
+  <!-- Filtro por categoría -->
   <div class="filter-section">
     <label for="category-select">Filter by Category:</label>
     <select [(ngModel)]="selectedCategory" id="category-select">
@@ -6,22 +14,40 @@
     </select>
   </div>
 
-    <div class="gallery">
-      <div *ngFor="let image of filterImages()" class="image-card" (click)="showDetails(image)">
-        <img [src]="image.url" [alt]="image.title">
-        <h3>{{ image.title }}</h3>
-        <p>{{ image.description }}</p>
-        <button (click)="toggleFavorite(image); $event.stopPropagation()">
-          {{ image.isFavorite ? 'Unfavorite' : 'Favorite' }}
-        </button>
-      </div>
-    </div>
-
-    <div *ngIf="selectedImage" class="modal">
-      <h2>{{ selectedImage.title }}</h2>
-      <img [src]="selectedImage.url" [alt]="selectedImage.title">
-      <p>{{ selectedImage.description }}</p>
-      <p>Date: {{ selectedImage.date | date }}</p>
-      <button (click)="selectedImage = null">Close</button>
+  <!-- Grilla de imágenes -->
+  <div class="image-grid">
+    <div *ngFor="let image of filterImages()" class="image-item">
+      <img [src]="image.url" [alt]="image.title" (click)="showDetails(image)" />
+      <p>{{ image.title }}</p>
+      <button (click)="toggleFavorite(image)">
+        {{ isFavorite(image) ? 'Remove from Favorites' : 'Add to Favorites' }}
+      </button>
     </div>
   </div>
+
+  <!-- Modal para mostrar los favoritos -->
+  <div *ngIf="isFavoritesModalOpen" class="favorites-modal">
+    <div class="modal-content">
+      <h2>Tus Favoritos</h2>
+      <button class="close-modal" (click)="closeFavoritesModal()">Cerrar</button>
+      <div *ngIf="favoriteImages.length === 0">
+        <p>No tienes imágenes favoritas aún.</p>
+      </div>
+      <div class="favorites-grid">
+        <div *ngFor="let image of favoriteImages" class="favorite-item">
+          <img [src]="image.url" [alt]="image.title">
+          <h3>{{ image.title }}</h3>
+          <p>{{ image.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para mostrar la imagen seleccionada -->
+  <div *ngIf="selectedImage" class="image-modal" (click)="selectedImage = null">
+    <div class="modal-content">
+      <img [src]="selectedImage.url" [alt]="selectedImage.title" />
+      <p>{{ selectedImage.title }}</p>
+    </div>
+  </div>
+</div>

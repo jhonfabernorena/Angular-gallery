@@ -5,6 +5,12 @@ import { Image } from '../models/image.model';
   providedIn: 'root'
 })
 export class ImageService {
+  getFavorites(): Image[] {
+    throw new Error('Method not implemented.');
+  }
+  isFavorite(id: number): boolean {
+    throw new Error('Method not implemented.');
+  }
   private images: Image[] = [
     {
       id: 1,
@@ -22,6 +28,15 @@ export class ImageService {
       description: 'A bustling city skyline at night.',
       category: 'Architecture',
       date: new Date('2024-02-01'),
+      isFavorite: false
+    },
+    {
+      id: 3,
+      url: 'assets/images/tecnologia-1.jpg',
+      title: 'Technology',
+      description: 'A computer screen displaying the latest technology news.',
+      category: 'Technology',
+      date: new Date('2024-03-01'),
       isFavorite: false
     },
 

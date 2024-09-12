@@ -9,14 +9,17 @@ import { Image } from '../../models/image.model';
 })
 export class ImageGalleryComponent implements OnInit {
   images: Image[] = [];
+  favoriteImages: Image[] = [];
   categories: string[] = ['All', 'Nature', 'Technology', 'Architecture'];
   selectedCategory: string = 'All';
   selectedImage: Image | null = null;
+  isFavoritesModalOpen: boolean = false;
 
   constructor(private imageService: ImageService) {}
 
   ngOnInit(): void {
     this.images = this.imageService.getImages();
+    this.favoriteImages = this.imageService.getFavoriteImages();
   }
 
   filterImages(): Image[] {
@@ -32,5 +35,18 @@ export class ImageGalleryComponent implements OnInit {
 
   toggleFavorite(image: Image): void {
     this.imageService.toggleFavorite(image.id);
+    this.favoriteImages = this.imageService.getFavoriteImages();
+  }
+
+  isFavorite(image: Image): boolean {
+    return this.favoriteImages.some(fav => fav.id === image.id);
+  }
+
+  openFavoritesModal(): void {
+    this.isFavoritesModalOpen = true;
+  }
+
+  closeFavoritesModal(): void {
+    this.isFavoritesModalOpen = false;
   }
 }
