@@ -1,0 +1,10 @@
+/* Estilos básicos para el componente raíz */
+h1 {
+    text-align: center;
+    color: #007bff;
+  }
+  
+  div {
+    margin: 20px;
+  }
+  

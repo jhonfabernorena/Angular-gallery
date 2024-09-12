@@ -1,0 +1,14 @@
+<div>
+    <h2>Favoritos</h2>
+    <div *ngIf="favoriteImages.length === 0">
+      <p>No tienes imágenes favoritas aún.</p>
+    </div>
+    <div class="gallery">
+      <div *ngFor="let image of favoriteImages" class="image-card">
+        <img [src]="image.url" [alt]="image.title">
+        <h3>{{ image.title }}</h3>
+        <p>{{ image.description }}</p>
+      </div>
+    </div>
+
+  </div>

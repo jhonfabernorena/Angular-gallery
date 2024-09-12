@@ -1,0 +1,28 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  .image-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .image-card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  h3 {
+    margin: 8px 0;
+  }
+  
+  p {
+    font-size: 14px;
+    color: #555;
+  }
+  

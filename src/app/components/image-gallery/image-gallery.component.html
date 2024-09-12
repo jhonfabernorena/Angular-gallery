@@ -1,0 +1,27 @@
+<div>
+  <div class="filter-section">
+    <label for="category-select">Filter by Category:</label>
+    <select [(ngModel)]="selectedCategory" id="category-select">
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  </div>
+
+    <div class="gallery">
+      <div *ngFor="let image of filterImages()" class="image-card" (click)="showDetails(image)">
+        <img [src]="image.url" [alt]="image.title">
+        <h3>{{ image.title }}</h3>
+        <p>{{ image.description }}</p>
+        <button (click)="toggleFavorite(image); $event.stopPropagation()">
+          {{ image.isFavorite ? 'Unfavorite' : 'Favorite' }}
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="selectedImage" class="modal">
+      <h2>{{ selectedImage.title }}</h2>
+      <img [src]="selectedImage.url" [alt]="selectedImage.title">
+      <p>{{ selectedImage.description }}</p>
+      <p>Date: {{ selectedImage.date | date }}</p>
+      <button (click)="selectedImage = null">Close</button>
+    </div>
+  </div>

@@ -1,0 +1,129 @@
+/* Estilo general para el contenedor de la galería */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Espacio entre tarjetas */
+  padding: 16px;
+}
+
+/* Estilo para cada tarjeta de imagen */
+.image-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 200px; /* Ancho fijo para las tarjetas */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el ratón sobre la tarjeta de imagen */
+.image-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para la imagen dentro de la tarjeta */
+.image-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Estilo para el título y descripción dentro de la tarjeta */
+.image-card h3 {
+  margin: 8px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.image-card p {
+  margin: 0 8px 8px;
+  color: #666;
+}
+
+/* Estilo para el botón dentro de la tarjeta */
+.image-card button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9em;
+  padding: 8px;
+  margin: 8px;
+  transition: background-color 0.3s ease;
+}
+
+/* Efecto al pasar el ratón sobre el botón */
+.image-card button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo para el modal */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 16px;
+  width: 80%;
+  max-width: 600px;
+  z-index: 1000; /* Asegúrate de que el modal esté sobre otros elementos */
+}
+
+/* Estilo para el título del modal */
+.modal h2 {
+  margin: 0 0 16px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+/* Estilo para la imagen dentro del modal */
+.modal img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 16px;
+}
+
+/* Estilo para el párrafo de la fecha dentro del modal */
+.modal p {
+  margin: 8px 0;
+  color: #ffffff;
+}
+
+/* Estilo para el botón de cerrar el modal */
+.modal button {
+  background-color: #dc3545;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 10px;
+  margin-top: 16px;
+  transition: background-color 0.3s ease;
+}
+
+/* Efecto al pasar el ratón sobre el botón de cerrar */
+.modal button:hover {
+  background-color: #c82333;
+}
+
+/* Estilo para el fondo del modal (opcional) */
+.modal::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
